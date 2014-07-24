@@ -1,7 +1,9 @@
 robotframework-uiautomatorlibrary
 =============
 
-This is a test library for [Robot Framework](https://pypi.python.org/pypi/robotframework) to bring keyword-driven testing to Android apps. It uses by using [Python uiautomator](https://pypi.python.org/pypi/uiautomator) internally.
+This is a test library for [Robot Framework](https://pypi.python.org/pypi/robotframework) to bring keyword-driven testing to Android apps.
+
+It uses by using  [Python uiautomator](https://pypi.python.org/pypi/uiautomator) internally.
 
 # Installation #
 

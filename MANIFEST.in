@@ -1,0 +1,5 @@
+include doc/*
+include support/*
+include demo/*
+include LICENSE.txt
+include README.txt
