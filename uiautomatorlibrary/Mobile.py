@@ -250,7 +250,7 @@ class Mobile():
         """
         Click at (x,y) coordinates.
         """
-        self.device.click(x, y)
+        self.device.click(int(x), int(y))
 
     def swipe_by_coordinates(self, sx, sy, ex, ey, steps=10):
         """
