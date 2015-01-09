@@ -66,7 +66,7 @@ class Mobile():
 
         Using different library name when importing this library according to http://robotframework.googlecode.com/hg/doc/userguide/RobotFrameworkUserGuide.html?r=2.8.5.
 
-        | Setting | Value |  Value |  Value | 
+        | Setting | Value  | Value     | Value   | 
         | Library | Mobile | WITH NAME | Mobile1 |
         | Library | Mobile | WITH NAME | Mobile2 |
 
@@ -108,7 +108,7 @@ class Mobile():
 
         Or get specific information of the device by giving the key.
 
-        | ${device_info}  | Get Device Info | | |
+        | ${device_info}  | Get Device Info |   |                |
         | ${product_name} | Get From Dictionary | ${device_info} | productName |
 
         =>
@@ -257,8 +257,8 @@ class Mobile():
         Swipe from (sx, sy) to (ex, ey) with *steps* .
 
         Example:
-        | Swipe By Coordinates | 540 | 1340 | 940 | 1340 | | # Swipe from (540, 1340) to (940, 100) with default steps 10 |
-        | Swipe By Coordinates | 540 | 1340 | 940 | 1340 | 100 | # Swipe from (540, 1340) to (940, 100) with steps 100 |
+        | Swipe By Coordinates | 540 | 1340 | 940 | 1340 |     | # Swipe from (540, 1340) to (940, 100) with default steps 10 |
+        | Swipe By Coordinates | 540 | 1340 | 940 | 1340 | 100 | # Swipe from (540, 1340) to (940, 100) with steps 100        |
         """
         self.device.swipe(sx, sy, ex, ey, steps)
 
@@ -270,10 +270,10 @@ class Mobile():
 
         Example:
 
-        | Swipe Left | description=Home screen 3 | | # swipe the UI object left |
-        | Swipe Left | 5 | description=Home screen 3 | # swipe the UI object left with steps=5 |
+        | Swipe Left | description=Home screen 3 |                           | # swipe the UI object left              |
+        | Swipe Left | 5                         | description=Home screen 3 | # swipe the UI object left with steps=5 |
 
-        See `introduction` for details about identified UI object.
+        See `introduction` for details about Identified UI object.
         """
         self.device(**selectors).swipe.left(steps=steps)
 
@@ -307,10 +307,10 @@ class Mobile():
 
         Example:
 
-        | ${object} | Get Object | description=Home screen 3 | # Get the UI object |
-        | Object Swipe Left | ${object} | | # Swipe the UI object left |
-        | Object Swipe Left | ${object} | 5 | # Swipe the UI object left with steps=5 |
-        | Object Swipe Left | ${object} | steps=5 | # Swipe the UI object left with steps=5 |
+        | ${object}         | Get Object | description=Home screen 3 | # Get the UI object                     |
+        | Object Swipe Left | ${object}  |                           | # Swipe the UI object left              |
+        | Object Swipe Left | ${object}  | 5                         | # Swipe the UI object left with steps=5 |
+        | Object Swipe Left | ${object}  | steps=5                   | # Swipe the UI object left with steps=5 |
 
         See `introduction` for details about identified UI object.
         """
@@ -492,8 +492,8 @@ class Mobile():
         Return whether the object can be Scroll or not.
 
         Example:
-        | ${can_be_scroll} | Scroll Forward Vertically | className=android.widget.ListView |  | # Scroll forward the UI object with class name |
-        | ${can_be_scroll} | Scroll Forward Vertically | 100 | className=android.widget.ListView | # Scroll with steps |
+        | ${can_be_scroll} | Scroll Forward Vertically | className=android.widget.ListView       |                                   | # Scroll forward the UI object with class name |
+        | ${can_be_scroll} | Scroll Forward Vertically | 100                                     | className=android.widget.ListView | # Scroll with steps |
         """
         return self.device(**selectors).scroll.vert.forward(steps=steps)
 
@@ -515,8 +515,8 @@ class Mobile():
 
         Example:
 
-        | ${list} | Get Object | className=android.widget.ListView |  | # Get the list object |
-        | ${is_web_view} | Scroll To Vertically | ${list} | text=WebView | # Scroll to text:WebView. |
+        | ${list}        | Get Object           | className=android.widget.ListView |              | # Get the list object     |
+        | ${is_web_view} | Scroll To Vertically | ${list}                           | text=WebView | # Scroll to text:WebView. |
         """
         return obj.scroll.vert.to(**selectors)
 
@@ -544,8 +544,8 @@ class Mobile():
 
         Example:
 
-        | Set Screen Orientation | n | # Set orientation to natural |
-        | Set Screen Orientation | natural | # Do the same thing  |
+        | Set Screen Orientation | n       | # Set orientation to natural |
+        | Set Screen Orientation | natural | # Do the same thing          |
         """
         self.device.orientation = orientation
 
@@ -650,6 +650,12 @@ class Mobile():
         return self.device(*args, **selectors)
 
     def get_child(self, object, *args, **selectors):
+        """
+        Get the UI object from the *object* with *selectors*
+        Example:
+        | ${root_layout}   | Get Object | className=android.widget.FrameLayout |
+        | ${child_layout}  | Get Child  | ${root_layout}                       | className=LinearLayout |
+        """
         return object.child(*args, **selectors)
 
     def get_count(self, *args, **selectors):
@@ -658,9 +664,9 @@ class Mobile():
 
         Example:
 
-        | ${count} | Get Count | text=Accessibility | # Get the count of UI object text=Accessibility |
-        | ${accessibility_text} | Get Object | text=Accessibility | # These two keywords combination |
-        | ${count} | Get Count Of Object | ${accessibility_text} | # do the same thing. |
+        | ${count}              | Get Count           | text=Accessibility    | # Get the count of UI object text=Accessibility |
+        | ${accessibility_text} | Get Object          | text=Accessibility    | # These two keywords combination                |
+        | ${count}              | Get Count Of Object | ${accessibility_text} | # do the same thing.                            |
 
         """
         obj = self.get_object(**selectors)
@@ -738,8 +744,8 @@ class Mobile():
 
         Example:
 
-        | ${accessibility_text} | Get Object | text=Accessibility | # Get the UI object |
-        | Call | ${accessibility_text} | click | # Call the method of the UI object 'click' |
+        | ${accessibility_text} | Get Object            | text=Accessibility | # Get the UI object                        |
+        | Call                  | ${accessibility_text} | click              | # Call the method of the UI object 'click' |
         """
         func = getattr(obj, method)
         return func(**selectors)
