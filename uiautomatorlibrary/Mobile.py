@@ -643,8 +643,14 @@ class Mobile():
         Get the UI object with selectors *selectors*
 
         See `introduction` for details about identified UI object.
+        
+        Example:
+        | ${main_layer} | Get Object | className=android.widget.FrameLayout | index=0 | # Get main layer which class name is FrameLayout |
         """
         return self.device(*args, **selectors)
+
+    def get_child(self, object, *args, **selectors):
+        return object.child(*args, **selectors)
 
     def get_count(self, *args, **selectors):
         """
@@ -743,6 +749,12 @@ class Mobile():
         Set *input_text* to the UI object with *selectors* 
         """
         self.device(**selectors).set_text(input_text)
+
+    def set_object_text(self, input_text, object):
+        """
+        Set *input_text* the *object* which could be selected by *Get Object* or *Get Child*
+        """
+        object.set_text(input_text)
 
 # Other feature
 
