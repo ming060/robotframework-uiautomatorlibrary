@@ -651,12 +651,21 @@ class Mobile():
 
     def get_child(self, object, *args, **selectors):
         """
-        Get the UI object from the *object* with *selectors*
+        Get the child or grandchild UI object from the *object* with *selectors*
         Example:
         | ${root_layout}   | Get Object | className=android.widget.FrameLayout |
         | ${child_layout}  | Get Child  | ${root_layout}                       | className=LinearLayout |
         """
         return object.child(*args, **selectors)
+
+    def get_sibling(self, object, *args, **selectors):
+        """
+        Get the sibling or child of sibling UI object from the *object* with *selectors*
+        Example:
+        | ${root_layout}     | Get Object   | className=android.widget.FrameLayout |
+        | ${sibling_layout}  | Get Sibling  | ${root_layout}                       | className=LinearLayout |
+        """
+        return object.sibling(*args, **selectors) 
 
     def get_count(self, *args, **selectors):
         """
@@ -727,6 +736,16 @@ class Mobile():
         | Click | text=Accessibility | className=android.widget.Button | # Click the object with class name and text |
         """
         self.device(**selectors).click()
+
+    def click_on_object(self, object):
+        """
+        Click on the UI object which is gained by `Get Object`.
+
+        Example:
+        | ${button_ok}    | text=OK      | className=android.widget.Button |
+        | Click on Object | ${button_ok} |
+        """
+        return object.click()
 
     def long_click(self, *args, **selectors):
         """
