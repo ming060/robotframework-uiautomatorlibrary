@@ -1,0 +1,7 @@
+Tips for generating documents
+=====
+## Generate Robot Framework Keyword Document ##
+
+Use the following command to generate a html document of Keywords under robotframework-uiautomatorlibrary directory:
+
+	python -m robot.libdoc uiautomatorlibrary doc\uiautomatorlibrary.html

@@ -12,7 +12,7 @@ class uiautomatorlibrary(Mobile):
 
     *Identify UI object*
 
-    If the UI object can be identified by just one selector, you can use keywords that manipulate the object directly.
+    If the UI object can be identified just by one selector, you can use keyword to manipulate the object directly.
 
     For example:
 
@@ -23,10 +23,12 @@ class uiautomatorlibrary(Mobile):
 
     For example:
 
-    | ${some_parent_object} | Get Object | description=parent |
-    | ${some_child_object}  | Get Child  | ${some_parent_object} | text=child |
+    | ${some_parent_object} | Get Object | className=android.widget.FrameLayout |
+    | ${some_child_object}  | Get Child  | ${some_parent_object}                | text=ShownTextOnChildObject |
 
-    Selector supports below parameters (more details https://github.com/xiaocong/uiautomator#selector):
+    *Selectors*
+
+    If the keyword argument expects _**selectors_, the following parameters are supported. (more details https://github.com/xiaocong/uiautomator#selector):
 
     - text, textContains, textMatches, textStartsWith
     - className, classNameMatches
@@ -36,6 +38,8 @@ class uiautomatorlibrary(Mobile):
     - packageName, packageNameMatches
     - resourceId, resourceIdMatches
     - index, instance
+
+    p.s. These parameters are case sensitive.
 
     *Input*
 
@@ -53,8 +57,7 @@ class uiautomatorlibrary(Mobile):
 
     You have to install TestAgent.apk (in support folder) to device.
     """
-
-    __version__ = '0.1'
+    ROBOT_LIBRARY_VERSION = '0.2'
     ROBOT_LIBRARY_DOC_FORMAT = 'ROBOT'
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_EXIT_ON_FAILURE = True
