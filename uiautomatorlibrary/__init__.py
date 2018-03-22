@@ -1,4 +1,4 @@
-from Mobile import Mobile
+from uiautomatorlibrary.Mobile import Mobile
 
 class uiautomatorlibrary(Mobile):
     """
